@@ -1,0 +1,17 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: eks-home-test
+  region: us-east-1
+
+managedNodeGroups:
+  - name: node-group-1
+    instanceType: t4g.large
+    desiredCapacity: 2
+    minSize: 1
+    maxSize: 3
+    iam:
+      withAddonPolicies:
+        autoScaler: true
+        externalDNS: true
+        ebs: true
